@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="text-center">
+            <h1 class="display-4 text-white">Welcome to Sentiment Analysis Dashboard</h1>
+            <p class="lead text-muted">Upload your CSV files for sentiment analysis and get actionable insights on stock trends.</p>
+        </div>
+
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-6">
+                <div class="card bg-dark text-white">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Analyze Your Data</h5>
+                        <p class="card-text">Easily upload your labeled sentiment data and discover insights on stock tickers.</p>
+                        <a href="{% url 'upload_csv' %}" class="btn btn-primary w-100">Upload Sentiment CSV</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="card bg-dark text-white">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Get Insights</h5>
+                        <p class="card-text">Visualize trends, sentiment, and identify the stocks most likely to perform well.</p>
+                        <a href="#" class="btn btn-outline-light w-100">View Analytics</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
