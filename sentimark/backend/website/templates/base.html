@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Django Project{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- FontAwesome for profile icon -->
     <style>
         body {
             background-color: #121212;
@@ -22,6 +23,27 @@
         .navbar-brand:hover, .nav-link:hover {
             color: #6200ea;
         }
+
+        .dropdown-menu {
+            background-color: #333;
+            border: none;
+        }
+
+        .dropdown-item {
+            color: #e0e0e0;
+        }
+
+        .dropdown-item:hover {
+            background-color: #6200ea;
+        }
+
+        .profile-icon {
+            color: #e0e0e0;
+            font-size: 20px;
+        }
+        .tw{
+            color: white !important;
+        }
     </style>
 </head>
 <body>
@@ -34,7 +56,20 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/upload/">Upload Sentiment CSV</a>
+                        <a class="nav-link" href="{% url 'upload_csv' %}">Upload Sentiment CSV</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user-circle profile-icon"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% if user.is_authenticated %}
+                                <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                                <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                            {% else %}
+                                <li><a class="dropdown-item" href="{% url 'login' %}">Sign In</a></li>
+                            {% endif %}
+                        </ul>
                     </li>
                 </ul>
             </div>

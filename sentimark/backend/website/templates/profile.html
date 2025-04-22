@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile - Django Project{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Profile</h2>
+
+    <!-- User Details -->
+    <div class="card bg-dark text-light mb-4">
+        <div class="card-body">
+            <h5 class="card-title">User Information</h5>
+            <p><strong>Username:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+        </div>
+    </div>
+
+    <!-- Uploaded Files -->
+    <h3 class="text-center mb-3 tw">Uploaded Sentiment Files</h3>
+    <div class="list-group">
+        {% for file in uploaded_files %}
+        <a href="#" class="list-group-item list-group-item-action bg-dark text-light">
+            {{ file.file.name }} (Uploaded on: {{ file.uploaded_at }})
+        </a>
+        {% empty %}
+        <p class="text-center text-muted">No files uploaded yet.</p>
+        {% endfor %}
+    </div>
+
+    <!-- Dashboard Button -->
+    <div class="d-flex justify-content-center mt-4">
+        <a href="/dashboard/" class="btn btn-primary btn-lg">Go to Dashboard</a>
+    </div>
+</div>
+{% endblock %}
